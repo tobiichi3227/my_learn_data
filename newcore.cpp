@@ -24,7 +24,6 @@ const void NewCore::input_vec(string& words)
     vector<char> vec_str(words.begin(), words.end());
     vector<int> vk;
     copy(vec_str.begin(), vec_str.end(), vec_str.begin());
-    //cout << endl;
 	for (int i = 0; i < vec_str.size(); i++)
     {
         char temp = words[i];
