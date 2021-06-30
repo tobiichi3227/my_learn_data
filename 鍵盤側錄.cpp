@@ -6,7 +6,6 @@ using namespace std;
 int main()
 {
 	string input;
-	int ch;
 	cout << "輸入:";
 	cin >> input;
 	cout << "輸出: ";
