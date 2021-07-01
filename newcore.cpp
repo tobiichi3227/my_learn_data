@@ -1,11 +1,9 @@
 #include "newcore.h"
 using namespace std;
 
-NewCore::NewCore() {}
-NewCore::NewCore(string& word)
-{
-    this->input_vec(word);
-}
+NewCore::NewCore() : m_string(""), m_char(NULL) {}
+NewCore::NewCore(string& words) : m_string(words) { input_words(m_string); }
+NewCore::NewCore(char& word) : m_char(word) { input_words(m_char); }
 void NewCore::down(int vk)
 {
     keybd_event(vk, 0, 0, 0);
@@ -16,22 +14,14 @@ void NewCore::up(int vk)
 }
 void NewCore::press(int vk)
 {
-    this->up(vk);
-    this->down(vk);
+    up(vk);
+    down(vk);
 }
-const void NewCore::input_vec(string& words)
+const void NewCore::input_words(string& words)
 {
-    vector<char> vec_str(words.begin(), words.end());
-    vector<int> vk;
-    copy(vec_str.begin(), vec_str.end(), vec_str.begin());
-	for (int i = 0; i < vec_str.size(); i++)
-    {
-        char temp = words[i];
-        vk.push_back(KeyMap[temp]);
-    }
-    for (int i = 0; i < vk.size(); i++)
-    {
-        this->press(vk[i]);
-    }
+    vector<int> vk(words.size());
+    for (int i = 0; i < words.size(); i++) { vk[i] = KeyMap[words[i]]; }
+    for (int i = 0; i < vk.size(); i++) { press(vk[i]); }
 }
+const void NewCore::input_words(char& word) { press(KeyMap[word]); }
 NewCore::~NewCore() {}
