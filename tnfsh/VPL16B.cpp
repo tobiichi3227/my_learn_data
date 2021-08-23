@@ -32,6 +32,7 @@ int main()
     int n{}, sum{};
     cin >> n;
     vector<int> temp(n);
+	vector<int< temp1(5);
     for (int i = 0; i < n; i++)
         cin >> temp[i];
 
@@ -47,7 +48,7 @@ int main()
 			maxIndex = i;
 		}
 	}
-    
+    /*
     auto a = static_cast<int>(count_if(temp.begin(), temp.end(), [](int x) -> bool
                       { return (x <= 100 and x >= 90); }));
     auto b = static_cast<int>(count_if(temp.begin(), temp.end(), [](int x) -> bool
@@ -66,7 +67,25 @@ int main()
     cout << "C:";for (int i = 0; i < c; i++) cout << "*"; cout << '\n';
     cout << "D:";for (int i = 0; i < d; i++) cout << "*"; cout << '\n';
     cout << "E:";for (int i = 0; i < e; i++) cout << "*"; cout << '\n';
-
+    */
+	for (auto &x : temp)
+	{
+		if (x <= 100 and x >= 90) temp1[0]++;
+		else if (x <= 89 and x >= 80) temp[1]++;
+		else if (x <= 79 and x >= 70) temp[2]++;
+		else if (x <= 69 and x >= 60) temp[3]++;
+		else temp[4]++;
+	}
+	cout << fixed << setprecision(2) << static_cast<double>(sum) / static_cast<double>(n) << '\n';
+    cout << maxIndex+1 << '\n';
+	for (int i = 0; i < 5; i++)
+	{
+		cout << static_cast<char>(65 + i);
+		for (int j = 0; j < temp1[i]; j++)
+			cout << "*";
+		cout << '\n';
+	}
+			
     //程式碼結尾
     return 0;
 }
