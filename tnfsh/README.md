@@ -7,7 +7,7 @@
 ### 尚須修改
 VPL4B VPL9.2
 ### 未過測資
-VPL11B
+VPL11B VPL12.4
 ### 尚未完成
 VPL12D
 VPL14A
