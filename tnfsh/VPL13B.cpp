@@ -1,5 +1,5 @@
 #include <iostream>
-//#include <string> 
+//#include <string>
 //#include <string.h> //strlen
 //#include <sstream>
 //#include <iomanip>
@@ -10,9 +10,6 @@
 //#include <random>
 //#include <ctime>
 
-
-
-
 using namespace std;
 
 int main()
@@ -22,14 +19,18 @@ int main()
     //加速cin cout用
     // fixed << setprecision(n) << variable
     //取小數點用
-    
+
     int n{};
     cin >> n;
     while (true)
     {
-        if (n % 2 == 0)
-    	    n /= 2;
-        else { cout << n << endl; break; }
+        if ((n & 1) == 0)
+            n /= 2;
+        else
+        {
+            cout << n << endl;
+            break;
+        }
     }
 
     return 0;
