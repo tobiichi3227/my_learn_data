@@ -1,5 +1,5 @@
 #include <iostream>
-//#include <string> 
+//#include <string>
 //#include <string.h> //strlen
 //#include <sstream>
 //#include <iomanip>
@@ -10,9 +10,6 @@
 //#include <random>
 //#include <ctime>
 
-
-
-
 using namespace std;
 
 int main()
@@ -22,11 +19,11 @@ int main()
     //加速cin cout用
     // fixed << setprecision(n) << variable
     //取小數點用
-    
+
     int n{}; // n(n+1) /2
     cin >> n;
     for (int i = n; i > 0; i--)
-	cout << "Sigma(" << i << ")=" << i * (i + 1) / 2 << "\n";
+        cout << "Sigma(" << i << ")=" << i * (i + 1) / 2 << "\n";
 
     return 0;
 }
