@@ -1,5 +1,5 @@
 #include <iostream>
-//#include <string> 
+//#include <string>
 //#include <cstring> //strlen
 //#include <sstream>
 //#include <iomanip> //setprecision
@@ -18,32 +18,33 @@
 using namespace std;
 
 //user function 開始
-int function1(vector<int>& array, int i, int j)
+int function1(vector<int> &array, int i, int j)
 {
-    if (i > j) swap(i, j);
+    if (i > j)
+        swap(i, j);
     for (int x = i; x <= j; x++)
     {
-	int test{1};
-	int n{x};
-	while(n>1)
-	{
-	    if (n % 2 == 1) 
-	    {
-		n = 3*n + 1;
-		test++;
-	    }
-	    else
-	    { 
-		n /= 2;
-		test++;
-	    }
-	}
-	array.emplace_back(test);
-	test = 1;
-    } 
+        int test{1};
+        int n{x};
+        while (n > 1)
+        {
+            if ((n & 1) == 1)
+            {
+                n = 3 * n + 1;
+                test++;
+            }
+            else
+            {
+                n >> 1;
+                test++;
+            }
+        }
+        array.emplace_back(test);
+        test = 1;
+    }
     //for (auto &y: array) cout << y << " ";
     //cout << endl;
-    return static_cast<int>(*max_element(array.begin(), array.end()));         
+    return static_cast<int>(*max_element(array.begin(), array.end()));
 }
 //user function 結尾
 
@@ -58,11 +59,11 @@ int main()
     //max_element(begin, end) return iterator
 
     //主要程序碼
-    
+
     int i{}, j{};
     while (cin >> i >> j)
     {
-	vector<int> array(abs(i-j));
+        vector<int> array(abs(i - j));
         cout << i << " " << j << " " << function1(array, i, j) << "\n";
     }
     //程式碼結尾
