@@ -35,7 +35,7 @@ int function1(vector<int> &array, int i, int j)
             }
             else
             {
-                n >> 1;
+                n /= 2;
                 test++;
             }
         }
