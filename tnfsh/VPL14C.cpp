@@ -30,7 +30,7 @@ int main()
         else if ((number & 1) == 1)
             number = 3 * number + 1;
         else if ((number & 1) == 0)
-            number >> 2; //number /= 2;
+            number /= 2; //number /= 2;
     }
     cout << i << endl;
 
