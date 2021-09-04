@@ -1,5 +1,5 @@
 #include <iostream>
-//#include <string> 
+//#include <string>
 //#include <string.h> //strlen
 //#include <sstream>
 //#include <iomanip>
@@ -19,15 +19,18 @@ int main()
     //加速cin cout用
     // fixed << setprecision(n) << variable
     //取小數點用
-    
-    int number{},i{};
+
+    int number{}, i{};
     cin >> number;
     while (number >= 1)
     {
         i++;
-	if (number == 1) break;
-	else if (number % 2 != 0) number = 3 * number + 1;
-	else if (number % 2 == 0) number /= 2;
+        if (number == 1)
+            break;
+        else if ((number & 1) == 1)
+            number = 3 * number + 1;
+        else if ((number & 1) == 0)
+            number >> 2; //number /= 2;
     }
     cout << i << endl;
 
