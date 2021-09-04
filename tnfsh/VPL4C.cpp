@@ -8,10 +8,10 @@ int main()
     cin.tie(NULL);
 
     int a{};
-    while (cin >> a)
+    cin >> a;
     {
-        if (a % 2 == 0)
-            cout << (a / 2) << "\n";
+        if ((a & 1) == 0)             //(a % 2 == 0)
+            cout << (a >> 1) << "\n"; //a >> n -> a / 2*n
         else
             cout << (3 * a + 1) << "\n";
     }
