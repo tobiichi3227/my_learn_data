@@ -51,7 +51,7 @@ using std::make_shared;
 using std::shared_ptr;
 
 using namespace std::chrono;
-//me
+//
 HWND progman = NULL, window = NULL;
 
 struct Vertex {
@@ -67,7 +67,7 @@ struct MediaFrame {
 	AVMediaType type;
 	AVFrame* frame;
 };
-//me
+//
 BOOL _stdcall EnumWindowsProc(_In_ HWND hwnd, _In_ LPARAM lp)
 {
 	auto ShellDll_defView = FindWindowEx(hwnd, 0, L"SHELLDLL_DefView", 0);
@@ -82,7 +82,7 @@ BOOL _stdcall EnumWindowsProc(_In_ HWND hwnd, _In_ LPARAM lp)
 	}
 	return true;
 }
-//me
+//
 void SetWallpaper()
 {
 	progman = FindWindow(L"Progman", L"Program Manager");
