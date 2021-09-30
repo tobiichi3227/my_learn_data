@@ -147,14 +147,14 @@ int main()
     cin >> n;
     for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j <= n - i - 1; j++)    cout << " ";
+        for (int j = 0; j < n - i - 1; j++)    cout << " ";
         for (int k = 0; k <= i; k++)    cout << static_cast<char>(k+65);
         for (int k = 0; k < i; k++)    cout << static_cast<char>(65+i-k-1);
         cout << endl;
     }
 	for (int i = n-1; i > 0; i--)
     {
-        for (int j = n-i; j >= 0 ; j--)    cout << " ";
+        for (int j = n-i; j > 0 ; j--)    cout << " ";
         for (int k = 0; k < i; k++)    cout << static_cast<char>(k+65);
         for (int k = 0; k < i-1; k++)    cout << static_cast<char>(65+i-k-2);
 	    cout << endl;
