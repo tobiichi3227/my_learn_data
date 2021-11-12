@@ -26,6 +26,8 @@ using namespace __gnu_pbds;
     F_ORC(__VA_ARGS__) \
     (__VA_ARGS__)
 #define EACH(x, a) for (auto &x : a)
+#define READ(x) (x)=read()
+#define LLREAD(x) (x)=llread()
 
 template <typename T>
 ostream &operator<<(ostream &out, const vector<T> &arr)
