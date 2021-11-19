@@ -5,5 +5,5 @@ int main()
 {
     int x, y;
     cin >> x >> y;
-    cout << 100-x << " " << 100-y << endl;
+    cout << 100-y << " " << 100-x << endl;
 }
