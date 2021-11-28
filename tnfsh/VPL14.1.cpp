@@ -25,6 +25,19 @@ int f(int n)
 }
 //user function 結尾
 
+int table[103];
+ 
+void dynamic_programming()
+{
+    // [Initial States]
+    table[0] = 1;
+    table[1] = 1;
+ 
+    // [Computation]
+    for (int i=2; i<=102; i++)
+        table[i] = table[i-1] + table[i-2];
+}
+
 int main()
 {
     //std::ios::sync_with_stdio(false); //加速cin cout用
@@ -37,7 +50,7 @@ int main()
     //主要程序碼
     int n;
     cin >> n;
-    cout << f(n) << endl;
+    cout << f(n-1) << endl;
 
     //程式碼結尾
     return 0;
