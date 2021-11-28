@@ -19,6 +19,8 @@ using namespace std;
 
 //user function 結尾
 
+int n{}, temp{}, ans{INT_MIN};
+
 int main()
 {
     //std::ios::sync_with_stdio(false); //加速cin cout用
@@ -29,12 +31,14 @@ int main()
     //max_element(begin, end) return iterator
     
     //主要程序碼
-    int n{};
     cin >> n;
-    vector<int> temp(n);
-    for (int i = 0; i < n; i++)
-	cin >> temp[i];
-    cout << *max_element(temp.begin(), temp.end()) << endl; 
+	for (int i = 0; i < n; ++i)
+	{
+		cin >> temp;
+		if (temp > ans)
+			ans = temp;
+	}
+	cout << ans << endl;
     //程式碼結尾
 
     return 0;
