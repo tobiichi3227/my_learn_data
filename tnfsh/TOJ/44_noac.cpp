@@ -47,6 +47,9 @@ int main()
 {
     miyuki_is_my_wife;
 
+    each(x, arr)
+        each(y, x)
+            y = -1;
     cin >> n >> m;
     rep(i, 0, n-1)
     {
@@ -56,14 +59,11 @@ int main()
     cin >> x1 >> y1 >> x2 >> y2;
 
     bfs(x1, y1);
-    // each(x, vis)
-    // {
-    //     each(y, x)
-    //         cout << y;
-    //     dd;
-    // }dd;
 
-    cout << vis[x2][y2] - 1<< endl;
+    if (vis[x2][y2] == 0)
+        cout << "-1\n";
+    else 
+        cout << vis[x2][y2] - 1 << "\n";
 
     return 0;
 }
