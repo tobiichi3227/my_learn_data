@@ -11,9 +11,9 @@ using namespace std;
 #define rep(i, j, k) for (int i = j; i <= k; ++i)
 #define ff first
 #define ss second
-using pii = std::pair<int, int>;
+//using pii = std::pair<int, int>;
+typedef std::pair<int, int> pii;
 #define dd cout << '\n';
-
 
 #define pb push_back
 #define all(c) (c).begin(), (c).end()
@@ -31,10 +31,10 @@ using pii = std::pair<int, int>;
     (__VA_ARGS__)
 #define each(x, a) for (auto &x : a)
 
-#define miyuki_is_my_wife ios::sync_with_stdio(false), cin.tie(nullptr)
+#define miyuki_is_my_wife ios::sync_with_stdio(false), cin.tie(0)
 
 const int mxN = 1e3+5, mxM = 1e3+5;
-int n{}, m{}, x1{}, y1{}, x2{}, y2{};
+int n, m, a, b, c, d;
 int arr[mxN][mxM];
 int vis[mxN][mxM];
 const int dx[] {0, 1, 0, -1};
@@ -46,24 +46,21 @@ void bfs(int x, int y);
 int main()
 {
     miyuki_is_my_wife;
-
-    each(x, arr)
-        each(y, x)
-            y = -1;
+    
     cin >> n >> m;
     rep(i, 0, n-1)
     {
         rep(j, 0, m-1)
             cin >> arr[i][j];
     }
-    cin >> x1 >> y1 >> x2 >> y2;
+    cin >> a >> b >> c >> d;
 
-    bfs(x1, y1);
+    bfs(a, b);
 
-    if (vis[x2][y2] == 0)
+    if (vis[c][d] == 0)
         cout << "-1\n";
     else 
-        cout << vis[x2][y2] - 1 << "\n";
+        cout << vis[c][d] - 1 << "\n";
 
     return 0;
 }
@@ -78,7 +75,7 @@ bool check(int x , int y)
 void bfs(int x, int y)
 {
     queue<pii> q;
-    q.push({x, y});
+    q.push(make_pair(x, y));
     vis[x][y] = 1;
     while (!q.empty())
     {
@@ -86,7 +83,7 @@ void bfs(int x, int y)
         q.pop();
         rep(i, 0, 3)
         {
-            pii next = {now.ff + dx[i], now.ss + dy[i]};
+            pii next = make_pair(now.ff + dx[i], now.ss + dy[i]);
             if (check(next.ff, next.ss))
             {
                 q.push(next);
