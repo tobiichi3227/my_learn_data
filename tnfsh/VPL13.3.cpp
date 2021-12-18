@@ -32,11 +32,10 @@ int main()
     
     //主要程序碼
     cin >> n;
-	for (int i = 0; i < n; ++i)
+    for (int i = 0; i < n; ++i)
 	{
 		cin >> temp;
-		if (temp > ans)
-			ans = temp;
+		ans = max(ans, temp);
 	}
 	cout << ans << endl;
     //程式碼結尾
