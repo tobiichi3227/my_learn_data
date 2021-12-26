@@ -1,53 +1,56 @@
+#include <cassert>
 #include <iostream>
-//#include <string> 
-//#include <cstring> //strlen
-//#include <sstream>
-//#include <iomanip> //setprecision
-//#include <vector>
-//#include <map>
-//#include <algorithm> 
-//#include <cmath> 
-//#include <random>
-//#include <ctime>
-//#include <cstdio>
-//#include <cstdlib>
-//#include <cctype> isdigit,isupper,islower
-
 using namespace std;
 
-//user function 開始
-int prime(int x)
+unsigned mod_pow(unsigned a, unsigned b, unsigned mod)
 {
-    int i{2};
-    bool isPrime = true;
-    while ( i <= x - 1 and isPrime)
+    unsigned result = 1;
+    while (b > 0)
     {
-	if (x % i == 0)
-	{
-	    isPrime = fasle;
-	    break;
-	}
-	i++
+        if (b & 1)
+            result = unsigned(uint64_t(result) * a % mod);
+
+        a = unsigned(uint64_t(a) * a % mod);
+        b >>= 1;
     }
-    if (isPrime) return 1;
-    else return 0;
+    return result;
 }
-//user function 結尾
+
+bool miller_rabin(unsigned n)
+{
+    if (n < 2)
+    {
+        return false;
+    }
+    for (unsigned p : {2, 3, 5, 7, 11, 13, 17, 23, 29})
+    {
+        if (n % p == 0)
+            return n == p;
+    }
+
+    int r = __builtin_ctz(n - 1);
+    unsigned d = (n - 1) >> r;
+    // https://www.youtube.com/watch?v=HVISmqzgIq8
+    for (unsigned a : {2, 7, 61})
+    {
+        unsigned x = mod_pow(a % n, d, n);
+        if (x <= 1 || x == n - 1)
+            continue;
+        for (int i = 0; i < r - 1 && x != n - 1; ++i)
+            x = unsigned(uint64_t(x) * x % n);
+        if (x != n - 1)
+            return false;
+    }
+    return true;
+}
 
 int main()
 {
-    //std::ios::sync_with_stdio(false); //加速cin cout用
-    //std::cin.tie(0); //加速cin cout用
-    //fixed << setprecision(n) << variable 取小數點用
-    //static_cast<new-type>(expression) 強制型別轉換
-    //int isdigit(int x) return 0 or int 判斷是否為0 - 9
-    //max_element(begin, end) return iterator
-    
-    //主要程序碼
-    int n{};
-    cin >> n;
-    cout << prime(n) << endl;
-    //程式碼結尾
-
-    return 0;
-}
+	int n{};
+	while (std::cin >> n)
+	{
+		if (miller_rabin(n))
+			cout << "1\n;
+		else
+			cout << "0\n";
+	}
