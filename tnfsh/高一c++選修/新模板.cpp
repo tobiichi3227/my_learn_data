@@ -5,7 +5,7 @@ using namespace std;
 #pragma GCC target("fma,sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,avx2,tune=native")
 #pragma pack(1)
 
-#define int long long
+using ll = long long;
 #define pb push_back
 #define ss second
 #define ff first
@@ -14,12 +14,14 @@ using namespace std;
 #define sz(container) static_cast<int>((container).size())
 #define each(x, arr) for (auto &x : arr)
 #define meminit(arr, element) memset((arr), (element), sizeof((arr)))
-#define rep(i, j, k) for (int i = j; i <= k; ++i)
+#define rep(i, j, k) for (i = j; i <= k; ++i)
 
-using pii = std::pair<int, int>;
+struct pii{
+    int first, second;
+};
 #define miyuki_is_my_wife ios::sync_with_stdio(false), cin.tie(nullptr)
 
-signed main()
+int main()
 {
     miyuki_is_my_wife;
 
