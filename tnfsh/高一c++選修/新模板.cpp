@@ -16,9 +16,7 @@ using ll = long long;
 #define meminit(arr, element) memset((arr), (element), sizeof((arr)))
 #define rep(i, j, k) for (i = j; i <= k; ++i)
 
-struct pii{
-    int first, second;
-};
+using pii = std::pair<int, int>;
 #define miyuki_is_my_wife ios::sync_with_stdio(false), cin.tie(nullptr)
 
 int main()
