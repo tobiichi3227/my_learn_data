@@ -11,7 +11,7 @@
 #include <vlc/libvlc.h>
 //#include "media.h"
 #define dd '\n'
-HWND WorkerW{ nullptr };
+//HWND WorkerW{ nullptr };
 
 using namespace std;
 
@@ -20,8 +20,7 @@ libvlc_media_player_t* media_player{ nullptr };
 libvlc_media_list_t* media_list{ nullptr };
 libvlc_media_list_player_t* media_list_player{ nullptr };
 int playerstate;
-std::vector<std::string> media_name;
-std::vector<libvlc_media_t*> arr_media;
+bool is_player = false;
 
 enum PlayerState {
 	STATE_PLAY, 
@@ -29,13 +28,14 @@ enum PlayerState {
 };
 
 void get_audio_file(const std::wstring& command);
+void set_volume(const int& volume);
 
-BOOL CALLBACK FindDesktop(HWND hwnd, LPARAM lp)
-{
-	auto p = FindWindowEx(hwnd, NULL, L"SHELLDLL_DefView", NULL);
-	if (p == NULL) return 1;
-	WorkerW = FindWindowEx(NULL, hwnd, L"WorkerW", NULL);
-}
+//BOOL CALLBACK FindDesktop(HWND hwnd, LPARAM lp)
+//{
+//	auto p = FindWindowEx(hwnd, NULL, L"SHELLDLL_DefView", NULL);
+//	if (p == NULL) return 1;
+//	WorkerW = FindWindowEx(NULL, hwnd, L"WorkerW", NULL);
+//}
 
 string w2s(const wstring& wstr)
 {
@@ -212,7 +212,7 @@ int main()
 
 	string syscall{}, command{}, file_path{};
 	wstring url;
-	int cnt{ 0 }, init{ 0 };
+	int cnt{ 0 }, init{ 0 }, _pos{ 0 }, volume{ 0 };
 	while (getline(cin, syscall))
 	{
 		if (syscall == "system call")
@@ -224,10 +224,11 @@ int main()
 			}
 			else if (command == "get file from youtube")
 			{
+				cout << "URL:";
 				wcin >> url;
 				cin.ignore();
 				wstring temp = exec_path;
-				temp += L"\\yt-dlp_x86.exe -x --audio-format mp3 -o temp"; temp += to_wstring(cnt); temp += L".%(ext)s ";
+				temp += L"\\yt-dlp_x86.exe -x --audio-format mp3 -o temp"; temp += to_wstring(++cnt); temp += L".%(ext)s ";
 				temp += url;
 				wcout << temp << dd;
 				get_audio_file(temp);
@@ -235,28 +236,31 @@ int main()
 			else if (command == "play from download file")
 			{
 				auto temp = exec_path;
-				temp += L"\\temp" + to_wstring(cnt) + L".webm";
+				temp += L"\\temp" + to_wstring(++cnt) + L".webm";
 				file_path = w2s(temp);
 				cout << file_path << dd;
 				if (!init)
 				{
 					setPlay(file_path);
 					init = 1;
+					is_player = 1;
 				}
 				else
 				{
 					add_new_media(file_path); //must release to add new media
+					is_player = 1;
 				}
 			}
 			else if (command == "inspect entire command list")
 			{
-				cout << "open file" << dd << "get file from youtube" << dd << "play" << dd << "play from download file" << dd << "pause" << dd << "start" << dd << "stop"
+				cout << "open file" << dd << "get file from youtube" << dd << "play" << dd << "play from download file" << dd << "set volume" << dd << "pause" << dd << "start" << dd << "stop"
 					<< dd << "add new" << dd << "release recollection" << dd << "delete file" << dd << "clear" << dd << "exit" << dd;
 			}
 			else if (command == "play")
 			{
 				setPlay(file_path);
 				init = 1;
+				is_player = 1;
 			}
 			else if (command == "pause" || command == "start")
 			{
@@ -276,11 +280,20 @@ int main()
 			{
 				file_path = w2s(GetVideoFilePath());
 				add_new_media(file_path);
+				is_player = 1;
 			}
 			else if (command == "delete file")
 			{
-				string file_name = { "temp" + to_string(cnt) + ".webm" };
+				cin >> _pos;
+				cin.ignore();
+				string file_name = { "temp" + to_string(_pos) + ".webm" };
 				remove(file_name.c_str());
+			}
+			else if (command == "set volume")
+			{
+				cin >> volume;
+				cin.ignore();
+				set_volume(volume);
 			}
 			else if (command == "clear") system("cls");
 			else if (command == "exit") break;
@@ -319,4 +332,15 @@ void get_audio_file(const std::wstring& command)
 	WaitForSingleObject(pi.hProcess, INFINITE);
 	CloseHandle(pi.hProcess);
 	CloseHandle(pi.hThread);
+}
+
+void get_audio_title()
+{
+
+}
+
+void set_volume(const int& volume)
+{
+	if (is_player)
+		libvlc_audio_set_volume(media_player, volume);
 }
