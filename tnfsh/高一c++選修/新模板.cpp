@@ -16,6 +16,11 @@ using ll = long long;
 #define c_each(i, arr) for (const auto &i : arr)
 #define rep(i, j, k) for (i = j; i <= k; ++i)
 
+void solve() noexcept
+{
+    
+}
+
 using pii = std::pair<int, int>;
 #define miyuki_is_my_wife ios::sync_with_stdio(false), cin.tie(nullptr)
 
