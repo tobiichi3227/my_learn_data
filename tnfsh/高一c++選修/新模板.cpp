@@ -12,8 +12,8 @@ using ll = long long;
 #define dd cout << '\n';
 #define all(container) (container).begin(), (container).end()
 #define sz(container) static_cast<int>((container).size())
-#define each(x, arr) for (auto &x : arr)
-#define meminit(arr, element) memset((arr), (element), sizeof((arr)))
+#define each(i, arr) for (auto &x : arr)
+#define c_each(i, arr) for (const auto &i : arr)
 #define rep(i, j, k) for (i = j; i <= k; ++i)
 
 using pii = std::pair<int, int>;
