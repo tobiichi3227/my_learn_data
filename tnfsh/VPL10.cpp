@@ -60,6 +60,8 @@ int main()
 	each(i, arr)
 		cin >> i;
 	quick_sort(arr, sz(arr));
+	std::sort(all(arr));
+	std::stable_sort(all(arr));
 	c_each(i, arr)
 		cout << i << '\n''
     return 0;
