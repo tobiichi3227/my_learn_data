@@ -1,73 +1,66 @@
-#include <iostream>
-//#include <string> 
-//#include <cstring> //strlen
-//#include <sstream>
-//#include <iomanip> //setprecision
-//#include <vector>
-//#include <map>
-//#include <algorithm> 
-//#include <cmath> 
-//#include <random>
-//#include <ctime>
-//#include <cstdio>
-//#include <cstdlib>
-//#include <cctype> isdigit,isupper,islower
-
+#include <bits/stdc++.h>
 using namespace std;
 
-void swap(int *a, int *b)
-{
-    int temp = *a;
-    *a = *b;
-    *b = temp;
-}
+// #include<bits/extc++.h>
+// using namespace __gnu_pbds;
 
-int partition(int *array, int front, int end)
+#pragma GCC optimize("Ofast,unroll-loops,no-stack-protector,fast-math")
+#pragma GCC target("fma,sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,avx2,tune=native")
+#pragma pack(1)
+
+using ll = long long;
+#define pb push_back
+#define ss second
+#define ff first
+#define dd cout << '\n';
+#define all(container) (container).begin(), (container).end()
+#define sz(container) static_cast<int>((container).size())
+#define each(x, arr) for (auto &x : arr)
+#define c_each(x, arr) for (const auto &x : arr)
+#define rep(i, j, k) for (int i = j; i <= k; ++i)
+using pii = std::pair<int, int>;
+
+#if __cplusplus >= 201402L
+template<class Fun> class y_combinator_result {
+    Fun fun_;
+public:
+    template<class T> explicit y_combinator_result(T &&fun): fun_(std::forward<T>(fun)) {}
+    template<class ...Args> decltype(auto) operator()(Args &&...args) { return fun_(std::ref(*this), std::forward<Args>(args)...); }
+};
+template<class Fun> decltype(auto) y_combinator(Fun &&fun) { return y_combinator_result<std::decay_t<Fun>>(std::forward<Fun>(fun)); }
+#endif
+
+#define miyuki_is_my_wife ios::sync_with_stdio(false), cin.tie(nullptr)
+
+void quick_sort(vector<int>& arr, const int len)
 {
-    int pivot = array[end];
-    int i = front - 1;
-    for (int j = front; j < end; j++)
-    {
-	if (array[j] < pivot) 	
+	if (len <= 1) return;
+	const int pivot = arr[rand() % len];
+	int i{0}, j{0}, k{len};
+	while (i < k)
 	{
-	    i++;
-	    swap(&array[i], &array[j]);
+		if (arr[i] < pivot)
+			std::swap(arr[i++], arr[j++]);
+		else if (pivot < arr[i])
+			std::swap(arr[i], arr[--k]);
+		else 
+			++i;
 	}
-    }
-    i++;
-    swap(&array[i], &array[end]);
-    return i;
+	quick_sort(arr, j);
+	quick_sort(arr + k, len - k);
 }
-void quicksort(int *array, int front, int end)
-{
-    if (front < end)
-    {
-	int pivot = partition(array, front, end);
-	quicksort(array, front, pivot - 1);
-	quicksort(array, pivot + 1, end);
-    }
-}
-
 
 int main()
 {
-    //std::ios::sync_with_stdio(false); //加速cin cout用
-    //std::cin.tie(0); //加速cin cout用
-    //fixed << setprecision(n) << variable 取小數點用
-    //static_cast<new-type>(expression) 強制型別轉換
-    //int isdigit(int x) return 0 or int 判斷是否為0 - 9
-    //max_element(begin, end) return iterator
-    
-    //主要程序碼
-    int n{}; //金榜題名時
-    cin >> n;
-    int temp[n];
-    for (int i = 0; i < n; i++)
-	cin >> temp[i];
-    quicksort(temp, 0, n - 1);
-    for (int i = n - 1; i >= 0; i--)
-	cout << temp[i] << endl;
-    //程式碼結尾
+    miyuki_is_my_wife;
 
+	int n{};
+	cin >> n;
+	vector<int> arr(n);
+	each(i, arr)
+		cin >> i;
+	quick_sort(arr, sz(arr));
+	c_each(i, arr)
+		cout << i << '\n''
     return 0;
 }
