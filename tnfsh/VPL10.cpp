@@ -32,7 +32,10 @@ template<class Fun> decltype(auto) y_combinator(Fun &&fun) { return y_combinator
 
 #define miyuki_is_my_wife ios::sync_with_stdio(false), cin.tie(nullptr)
 
-void quick_sort(vector<int>& arr, const int len)
+const int mxN = 1e5;
+int arr[mxN];
+
+void quick_sort(int arr[], const int len)
 {
 	if (len <= 1) return;
 	const int pivot = arr[rand() % len];
@@ -56,13 +59,16 @@ int main()
 
 	int n{};
 	cin >> n;
-	vector<int> arr(n);
-	each(i, arr)
-		cin >> i;
-	quick_sort(arr, sz(arr));
-	std::sort(all(arr));
-	std::stable_sort(all(arr));
-	c_each(i, arr)
-		cout << i << '\n''
+	rep(i, 0, n - 1)
+	{
+	    cin >> arr[i];
+	}
+	quick_sort(arr, n);
+	// 	std::sort(arr, arr+n);
+	std::stable_sort(arr, arr+n);
+	rep(i, 0, n - 1)
+	{
+	    cout << arr[i] << '\n';
+	}
     return 0;
 }
