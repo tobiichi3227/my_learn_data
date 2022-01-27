@@ -1,41 +1,50 @@
-#include <iostream>
-#include <string>
-//#include <string.h> //strlen
-//#include <sstream>
-//#include <iomanip>
-//#include <vector>
-//#include <map>
-//#include <algorithm>
-//#include <cmath>
-//#include <random>
-//#include <ctime>
-
+#include <bits/stdc++.h>
 using namespace std;
+
+// #include<bits/extc++.h>
+// using namespace __gnu_pbds;
+
+#pragma GCC optimize("Ofast,unroll-loops,no-stack-protector,fast-math")
+#pragma GCC target("fma,sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,avx2,tune=native")
+#pragma pack(1)
+
+using ll = long long;
+#define pb push_back
+#define ss second
+#define ff first
+#define dd cout << '\n';
+#define all(container) (container).begin(), (container).end()
+#define sz(container) static_cast<int>((container).size())
+#define each(x, arr) for (auto &x : arr)
+#define c_each(x, arr) for (const auto &x : arr)
+#define rep(i, j, k) for (int i = j; i <= k; ++i)
+using pii = std::pair<int, int>;
+
+#if __cplusplus >= 201402L
+template<class Fun> class y_combinator_result {
+    Fun fun_;
+public:
+    template<class T> explicit y_combinator_result(T &&fun): fun_(std::forward<T>(fun)) {}
+    template<class ...Args> decltype(auto) operator()(Args &&...args) { return fun_(std::ref(*this), std::forward<Args>(args)...); }
+};
+template<class Fun> decltype(auto) y_combinator(Fun &&fun) { return y_combinator_result<std::decay_t<Fun>>(std::forward<Fun>(fun)); }
+#endif
+
+#define miyuki_is_my_wife ios::sync_with_stdio(false), cin.tie(nullptr)
+
+string number{};
+int ans{};
 
 int main()
 {
-    std::ios::sync_with_stdio(false);
-    std::cin.tie(0);
-    //加速cin cout用
-    // fixed << setprecision(n) << variable
-    //取小數點用
+    miyuki_is_my_wife;
 
-    string number{}; //比較好的解 不太會受到int上限的影響
-    int sum{};
     cin >> number;
-    for (int i = 0; i < number.length(); i++)
-        sum += number[i] - '0';
-    cout << sum << endl;
-    /*
-    標準解 原理: 一個數的個位數對10取餘數就是個位數本身,接著再將這個以計算的個位數消掉
-    將這個數/=10,就可以將以計算的數削掉,因為long long int,所以不會有小數點的產生
-    long long int temp{}, sum{};
-    cin >> temp;
-    while(temp != 0)
+    c_each(i, number)
     {
-        sum += temp % 10;
-        temp /= 10;
+        ans += (i ^ 48);
     }
-    */
+    cout << ans << '\n';
+    
     return 0;
 }
