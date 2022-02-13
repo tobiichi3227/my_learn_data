@@ -52,10 +52,7 @@ int main()
             money_sum += 70;
             x -= 1500;
             double n = (x / 500.0);
-            for (int i = 0; i < n; i++)
-            {
-                money_sum += 5;
-            }
+            money_sum += static_cast<int>(n) * 5;
         }
         cout << money_sum << "\n";    
     }
