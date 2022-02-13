@@ -40,7 +40,7 @@ int main()
     rep(i, 0, 2)
         cin >> numbers[i];
     sort(all(numbers));
-    if (abs(numbers[0] - numbers[1]) <= numbers[2] and numbers[2] <= (numbers[1] + numbers[0]))
+    if (abs(numbers[0] - numbers[1]) <= numbers[2] && numbers[2] <= (numbers[1] + numbers[0]))
     {
         double r = numbers[0] * numbers[0] + numbers[1] * numbers[1];
         double h = numbers[2] * numbers[2];
