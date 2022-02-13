@@ -46,7 +46,7 @@ int main()
     else
     {
         if (x <= 1500)
-        money_sum = 70;
+            money_sum = 70;
         else
         {
             money_sum += 70;
