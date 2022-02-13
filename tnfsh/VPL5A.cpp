@@ -42,21 +42,23 @@ int main()
     if (x > 10000)
     {
         cout << "Sleeping in school" << "\n";
-        return 0;
     }
-    if (x <= 1500)
-        money_sum = 70;
     else
     {
-        money_sum += 70;
-        x -= 1500;
-        double n = (x / 500.0);
-        for (int i = 0; i < n; i++)
+        if (x <= 1500)
+        money_sum = 70;
+        else
         {
-            money_sum += 5;
+            money_sum += 70;
+            x -= 1500;
+            double n = (x / 500.0);
+            for (int i = 0; i < n; i++)
+            {
+                money_sum += 5;
+            }
         }
+        cout << money_sum << "\n";    
     }
-    cout << money_sum << "\n";
     
     return 0;
 }
