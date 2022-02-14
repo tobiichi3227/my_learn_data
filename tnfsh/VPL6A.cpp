@@ -38,15 +38,15 @@ int main()
 {
     miyuki_is_my_wife;
 	
-	cin >> n >> number;
+    cin >> n >> number;
     if (n > 45 || n <= 0) 
     {
 		cout << "Error" << "\n";
     }
-	else
+    else
 	{
-		rep(i, 1, n)
-			cout << i << ": " << (number + i) << "\n";
+	    rep(i, 1, n)
+		    cout << i << ": " << (number + i) << "\n";
 	}
     return 0;
 }
