@@ -41,12 +41,13 @@ int main()
 	cin >> n >> number;
     if (n > 45 || n <= 0) 
     {
-	cout << "Error" << "\n";
-	return 0;
+		cout << "Error" << "\n";
     }
-    rep(i, 1, n)
-		cout << i << ": " << (number + i) << "\n";
-	
+	else
+	{
+		rep(i, 1, n)
+			cout << i << ": " << (number + i) << "\n";
+	}
     return 0;
 }
 
