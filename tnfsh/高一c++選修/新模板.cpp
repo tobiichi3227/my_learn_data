@@ -6,6 +6,7 @@ using namespace std;
 #pragma pack(1)
 
 using ll = long long;
+using pii = std::pair<int, int>;
 #define pb push_back
 #define ss second
 #define ff first
@@ -15,18 +16,24 @@ using ll = long long;
 #define each(i, arr) for (auto &x : arr)
 #define c_each(i, arr) for (const auto &i : arr)
 #define rep(i, j, k) for (i = j; i <= k; ++i)
+#define print(str) cout << (str)
 
 void solve() noexcept
 {
     
 }
 
-using pii = std::pair<int, int>;
 #define miyuki_is_my_wife ios::sync_with_stdio(false), cin.tie(nullptr)
 
 int main()
 {
     miyuki_is_my_wife;
 
+    int tc{}; //int tc{1};
+    cin >> tc;
+    while (tc--) {
+        solve();
+    }
+    
     return 0;
 }
