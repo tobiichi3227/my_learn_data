@@ -27,9 +27,9 @@ using pll = std::pair<ll, ll>;
 template<typename... T>
 void ccin   (T&... args) { ((cin >> args), ...); }
 template<typename... T>
-void ccout  (T&... args) { ((cout << args << " "), ...); }
+void ccout  (T&&... args) { ((cout << args << " "), ...); }
 template<typename... T>
-void ccoutl (T&... args) { ((cout << args << " "), ...); cout << '\n'; }
+void ccoutl (T&&... args) { ((cout << args << " "), ...); cout << '\n'; }
 // #endif
 
 #define miyuki_is_my_wife_and_sister ios::sync_with_stdio(false), cin.tie(nullptr)
