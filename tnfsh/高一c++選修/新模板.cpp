@@ -23,14 +23,14 @@ using pll = std::pair<ll, ll>;
 #define rep(i, j, k) for (int (i) = (j); (i) <= (k); ++(i))
 #define INF 0x3f
 
-#if __cplusplus > 201703L
+// #if __cplusplus > 201703L
 template<typename... T>
 void ccin   (T&... args) { ((cin >> args), ...); }
 template<typename... T>
 void ccout  (T&... args) { ((cout << args << " "), ...); }
 template<typename... T>
 void ccoutl (T&... args) { ((cout << args << " "), ...); cout << '\n'; }
-#endif
+// #endif
 
 #define miyuki_is_my_wife_and_sister ios::sync_with_stdio(false), cin.tie(nullptr)
 
