@@ -1,59 +1,30 @@
-//沒過測資
-#include <iostream>
-//#include <string>
-//#include <cstring> //strlen
-//#include <sstream>
-//#include <iomanip> //setprecision
-//#include <vector>
-//#include <map>
-//#include <algorithm>
-//#include <cmath>
-//#include <random>
-//#include <ctime>
-//#include <cstdio>
-//#include <cstdlib>
-//#include <cctype> isdigit,isupper,islower
-
+#include <bits/stdc++.h>
 using namespace std;
 
-int main()
-{
-    std::ios::sync_with_stdio(false); //加速cin cout用
-    std::cin.tie(0);                  //加速cin cout用
-    //fixed << setprecision(n) << variable 取小數點用
-    //static_cast<new-type>(expression) 強制型別轉換
-    //int isdigit(int x) return 0 or int 判斷是否為0 - 9
-    //max_element(begin, end) return iterator
+#define miyuki_is_my_wife ios::sync_with_stdio(false), cin.tie(nullptr)
 
-    //主要程序碼
-    int n{};
-    cin >> n;
-    if (n % 2 == 0)
-    {
-        cout << "This is a Xmas tree.\n";
-        return 0;
+int main(){
+    miyuki_is_my_wife;
+    int n;
+    cin>>n;
+    if(n&1==1) {
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n-i-1;j++){
+                cout<<" ";
+            }
+            for(int j=0;j<2*i+1;j++){
+                cout<<i+1;
+            }
+            cout<<endl;
+        }
+        for(int i=0;i<n-1;i++){
+            for(int j=0;j<n-1;j++){
+                cout<<" ";
+            }
+            cout<<i+1<<endl;
+        }
     }
-    if (n == 1)
-    {
-        cout << "1" << endl;
-        return 0;
+    else{
+        cout<<"This is a Xmas tree.\n";
     }
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < n - i - 1; j++)
-            cout << " ";
-        for (int k = 1; k <= 2 * i + 1; k++)
-            cout << i + 1;
-        cout << endl;
-    }
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < n - 1; j++)
-            cout << " ";
-        if ((i + 1) != n)
-            cout << i + 1 << endl;
-    }
-    //程式碼結尾
-
-    return 0;
 }
