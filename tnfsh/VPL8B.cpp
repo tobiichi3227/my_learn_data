@@ -42,8 +42,9 @@ int main()
     bool is_all_pass = true;
     for (int i = 0; i < n; i++)
     {
-	cin >> temp;
-	if (temp < 60) is_all_pass = false;
+		cin >> temp;
+		if (temp < 60) 
+			is_all_pass = false;
     }
     if (is_all_pass == true) 
 		cout << "HAHA, I PASS!!! Bite me!!!" << "\n";
