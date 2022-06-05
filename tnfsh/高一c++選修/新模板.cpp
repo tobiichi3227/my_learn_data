@@ -1,8 +1,6 @@
 #include <bits/stdc++.h>
+#include <bits/extc++.h>
 using namespace std;
-
-// #include<bits/extc++.h>
-// using namespace __gnu_pbds;
 
 #pragma GCC optimize("Ofast,unroll-loops,no-stack-protector,fast-math")
 #pragma GCC target("fma,sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,avx2,tune=native")
@@ -14,6 +12,8 @@ using f32 = double;
 using f64 = long double;
 using pii = std::pair<i32, i32>;
 using pll = std::pair<i64, i64>;
+using order_multiset = __gnu_pbds::tree<i32, __gnu_pbds::null_type, less_equal<i32>, __gnu_pbds::rb_tree_tag, __gnu_pbds::tree_order_statistics_node_update>;
+using order_set      = __gnu_pbds::tree<i32, __gnu_pbds::null_type, less<i32>, __gnu_pbds::rb_tree_tag, __gnu_pbds::tree_order_statistics_node_update>;
 #define pb push_back
 #define eb emplace_back
 #define ss second
@@ -26,12 +26,14 @@ using pll = std::pair<i64, i64>;
 #define rep(i, j, k) for (i32 (i) = (j); (i) <= (k); ++(i))
 #define INF 0x3f
 
+// #if __cplusplus > 201703L
 template<typename... T>
-void ccin   (T&... args) { ((cin >> args), ...); }
+inline void ccin   (T&... args)  { ((cin >> args), ...); }
 template<typename... T>
-void ccout  (T&&... args) { ((cout << args << " "), ...); }
+inline void ccout  (T&&... args)  { ((cout << args << " "), ...); }
 template<typename... T>
-void ccoutl (T&&... args) { ((cout << args << " "), ...); cout << '\n'; }
+inline void ccoutl (T&&... args) { ((cout << args << " "), ...); cout << '\n'; }
+// #endif
 
 #define miyuki_is_my_wife_and_sister ios::sync_with_stdio(false), cin.tie(nullptr)
 
