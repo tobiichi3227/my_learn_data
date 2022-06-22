@@ -51,7 +51,7 @@ inline void ccoutl (T&&... args)  { ((std::cout << args << " "), ...); std::cout
 
 i32 main()
 {
-    miyuki_is_my_wife_and_sister;
+    miyuki_is_my_wife_and_sister; //深雪わ私の妻です
 
     return 0;
 }
