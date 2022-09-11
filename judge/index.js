@@ -34,6 +34,8 @@ var index = new function(){
 	}
 
 	parts = location.href.split('#');
+	console.log(parts);
+	    
 	if(curr_url == parts[0] && force == false){
 	    _scroll();
 	    return;
@@ -42,6 +44,7 @@ var index = new function(){
 	curr_url = parts[0];
 
 	parts = curr_url.split('/');
+	console.log(parts);
 	if(parts[4] == ''){
 	    page = 'info';
 	    req = '/info';
